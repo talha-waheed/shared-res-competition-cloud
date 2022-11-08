@@ -1,0 +1,1 @@
+# shared-res-competition-cloud
