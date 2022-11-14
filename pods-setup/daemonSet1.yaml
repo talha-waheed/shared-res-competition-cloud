@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: daemonset1
+  labels:
+    k8s-app: daemonset1
+spec:
+  selector:
+    matchLabels:
+      name: daemonset1
+  template:
+    metadata:
+      labels:
+        name: daemonset1
+    spec:
+      tolerations:
+      - key: "nodeGroup"
+        value: "shared"
+        effect: "NoSchedule"
+      - key: "nodeGroup"
+        value: "1excl"
+        effect: "NoSchedule"
+      containers:
+      - name: daemonset1
+        image: bstashchuk/k8s-web-hello
+        resources:
+          limits:
+            cpu: 2000m
+            memory: 2000Mi
+          requests:
+            cpu: 250m
+            memory: 250Mi
+        ports:
+          - containerPort: 3000
