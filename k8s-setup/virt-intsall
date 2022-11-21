@@ -1,0 +1,5 @@
+virt-install --name k8s-master --os-variant ubuntu18.04 --vcpus 2 --ram 2048 --location http://us.archive.ubuntu.com/ubuntu/dists/wily/main/installer-amd64/ --network bridge=virbr0,model=virtio --graphics none --extra-args='console=ttyS0,115200n8 serial' --disk size=8
+
+virt-install --name k8s-master --os-variant ubuntu20.04 --vcpus 2 --ram 2048 --location http://ftp.ubuntu.com/ubuntu/dists/focal/main/installer-amd64/ --network bridge=virbr0,model=virtio --graphics none --extra-args='console=ttyS0,115200n8 serial'
+
+virt-install --name k8s-master --os-variant ubuntu18.04 --vcpus 2 --ram 2048 --cdrom /home/twaheed2/k8s_vms/ubuntu-18.04.6-live-server-amd64.iso --network bridge=virbr0,model=virtio --graphics none --disk size=8

@@ -1,0 +1,55 @@
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: depl1
+spec:
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: depl1
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: depl1
+    spec:
+      containers:
+      - name: depl1
+        image: nginx
+        resources:
+          limits:
+            cpu: 2000m
+            memory: 2000Mi
+          requests:
+            cpu: 250m
+            memory: 250Mi
+        ports:
+        - containerPort: 80
+      tolerations:
+      - key: "nodeGroup"
+        value: "shared"
+        effect: "NoSchedule"
+      - key: "nodeGroup"
+        value: "1excl"
+        effect: "NoSchedule"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx
+  namespace: default
+  labels:
+    app: nginx
+  # annotations:
+  #   service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
+spec:
+  # externalTrafficPolicy: Local
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: nginx
+  type: LoadBalancer

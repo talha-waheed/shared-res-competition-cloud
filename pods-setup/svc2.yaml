@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: depl2
+spec:
+  type: LoadBalancer
+  selector:
+    app: depl2
+  ports:
+  - port: 3030
+    targetPort: 3000

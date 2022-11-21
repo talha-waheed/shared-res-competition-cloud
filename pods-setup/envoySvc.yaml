@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: daemonset1
+spec:
+  clusterIP: None
+  ports:
+  - name: daemonset1
+    port: 3030
+    targetPort: 3000
+  selector:
+    app: daemonset1
