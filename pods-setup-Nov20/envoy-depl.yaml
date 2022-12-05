@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: envoy-lb-hw1
+  labels:
+    app: envoy-lb-hw1
+spec:
+  selector:
+    matchLabels:
+      app: envoy-lb-hw1
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: envoy-lb-hw1
+    spec:
+      containers:
+      - name: envoy-lb-hw1
+        image: talhawaheed/envoy-lb:1
+        imagePullPolicy: Always
+        env:
+        - name: "SERVICE_NAME"
+          value: "hw1"
+        - name: "ENVOY_LB_ALG"
+          value: "LEAST_REQUEST"
+        ports:
+        - name: http
+          containerPort: 80
+        - name: envoy-admin
+          containerPort: 9901

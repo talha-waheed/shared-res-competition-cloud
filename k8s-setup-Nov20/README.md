@@ -43,9 +43,17 @@ ssh into the other VMs and do the following steps for each of them:
 
 After this, wait for ~90s, and then on the master node, run `kubectl get nodes`. You should get the following:
 ```
-NAME            STATUS   ROLES    AGE     VERSION
-192.168.33.10   Ready    master   4h      v1.18.0
-192.168.33.11   Ready    worker   3h38m   v1.18.0
-192.168.33.12   Ready    worker   3h33m   v1.18.0
-192.168.33.13   Ready    worker   3h58m   v1.18.0
+NAME             STATUS   ROLES    AGE     VERSION
+192.168.50.150   Ready    master   6d2h    v1.18.0
+192.168.50.151   Ready    <none>   6d1h    v1.18.0
+192.168.50.152   Ready    <none>   2m32s   v1.18.0
+192.168.50.153   Ready    <none>   2m16s   v1.18.0
+```
+
+To assign, the worker nodes a role of worker, run the following on the master node:
+
+```
+kubectl label node 192.168.50.151 node-role.kubernetes.io/worker=worker
+kubectl label node 192.168.50.152 node-role.kubernetes.io/worker=worker
+kubectl label node 192.168.50.153 node-role.kubernetes.io/worker=worker
 ```

@@ -1,0 +1,53 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: hw1
+spec:
+  type: NodePort
+  selector:
+    run: hw1
+  ports:
+  - port: 8080
+    targetPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: hw2
+spec:
+  type: NodePort
+  selector:
+    run: hw2
+  ports:
+  - port: 8080
+    targetPort: 8080
+
+
+Name:                     hw1
+Namespace:                default
+Labels:                   <none>
+Annotations:              <none>
+Selector:                 run=hw1
+Type:                     NodePort
+IP:                       10.107.32.106
+Port:                     <unset>  8080/TCP
+TargetPort:               8080/TCP
+NodePort:                 <unset>  32618/TCP
+Endpoints:                10.244.1.2:8080,10.244.2.2:8080
+Session Affinity:         None
+External Traffic Policy:  Cluster
+Events:                   <none>
+
+Name:                     hw1
+Namespace:                default
+Labels:                   <none>
+Annotations:              Selector:  app=hw1
+Type:                     NodePort
+IP:                       10.99.201.162
+Port:                     <unset>  8080/TCP
+TargetPort:               8080/TCP
+NodePort:                 <unset>  30872/TCP
+Endpoints:                <none>
+Session Affinity:         None
+External Traffic Policy:  Cluster
+Events:                   <none>
