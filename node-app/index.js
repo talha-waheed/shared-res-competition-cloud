@@ -7,24 +7,30 @@ const { allowedNodeEnvironmentFlags } = require('process');
 const app = express();
 
 const PORT = 3000;
-const HOST = '0.0.0.0';
+const HOST = 'localhost';
 
-const mySlowFunction = (baseNumber) => {
+const mySlowFunction = (totalLoopCount, baseNumber) => {
+  // console.log(totalLoopCount, baseNumber)
   // console.time('mySlowFunction');
-  let result = 0;
-  for (var i = Math.pow(baseNumber, 7); i >= 0; i--) {		
-    result += Math.atan(i) * Math.tan(i);
-  };
+  for (let loopCount = 0; loopCount < totalLoopCount; loopCount++) {
+    let result = 0;
+    for (var i = Math.pow(baseNumber, 7); i >= 0; i--) {		
+      result += Math.atan(i) * Math.tan(i);
+    };
+  }
   // console.timeEnd('mySlowFunction');
 }
 
-app.get("/:iter", (req, res) => {
+app.get("/:iter/:base", (req, res) => {
   const startTime = Date.now()
-  mySlowFunction(req.params.iter); // higher number => more iterations => slower
+  mySlowFunction(req.params.iter, req.params.base); // higher number => more iterations => slower
   const endTime = Date.now()
   const responseMsg = `${startTime} ${endTime} ${os.hostname()}`
-  res.send(responseMsg);
+  // res.set("Connection", "close");
+  res.status(200).send(responseMsg);
 });
+
+
 
 // app.get("/", (req, res) => {
 //   const helloMessage = `VERSION 2: Hello from the ${os.hostname()}`

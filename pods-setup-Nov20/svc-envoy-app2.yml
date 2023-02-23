@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: envoy-lb
+  name: envoy-lb-app2
   labels:
-    app: envoy-lb
+    app: envoy-lb-app2
 spec:
   type: NodePort
   ports:
@@ -12,4 +12,4 @@ spec:
     targetPort: http
     protocol: TCP
   selector:
-    app: envoy-lb
+    app: envoy-lb-app2

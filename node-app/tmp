@@ -1,0 +1,15 @@
+node temp.js $i  0.12s user 0.12s system 102% cpu 0.233 total
+node temp.js $i  0.23s user 0.01s system 99% cpu 0.237 total
+node temp.js $i  0.33s user 0.01s system 99% cpu 0.335 total
+node temp.js $i  0.43s user 0.01s system 99% cpu 0.435 total
+node temp.js $i  0.53s user 0.01s system 99% cpu 0.534 total
+node temp.js $i  0.63s user 0.01s system 99% cpu 0.634 total
+node temp.js $i  0.72s user 0.01s system 99% cpu 0.734 total
+node temp.js $i  0.82s user 0.01s system 99% cpu 0.835 total
+node temp.js $i  0.92s user 0.01s system 99% cpu 0.936 total
+node temp.js $i  1.02s user 0.01s system 99% cpu 1.035 total
+node temp.js $i  1.12s user 0.01s system 99% cpu 1.134 total
+node temp.js $i  1.22s user 0.01s system 99% cpu 1.235 total
+node temp.js $i  1.32s user 0.01s system 99% cpu 1.336 total
+node temp.js $i  1.42s user 0.01s system 99% cpu 1.435 total
+node temp.js $i  1.52s user 0.01s system 99% cpu 1.536 total
